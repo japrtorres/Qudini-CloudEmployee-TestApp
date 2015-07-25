@@ -1,0 +1,111 @@
+﻿<Page
+    x:Class="QudiniTestApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:QudiniTestApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Style x:Key="ListViewItemStyle1" TargetType="ListViewItem">
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="TabNavigation" Value="Local"/>
+            <Setter Property="IsHoldingEnabled" Value="True"/>
+            <Setter Property="Margin" Value="0,0,18,2"/>
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <ListViewItemPresenter CheckHintBrush="{ThemeResource ListViewItemCheckHintThemeBrush}" 
+                                               CheckBrush="{ThemeResource ListViewItemCheckThemeBrush}" 
+                                               ContentMargin="4" 
+                                               ContentTransitions="{TemplateBinding ContentTransitions}" 
+                                               CheckSelectingBrush="{ThemeResource ListViewItemCheckSelectingThemeBrush}" 
+                                               DragForeground="{ThemeResource ListViewItemDragForegroundThemeBrush}" 
+                                               DragOpacity="{ThemeResource ListViewItemDragThemeOpacity}" 
+                                               DragBackground="{ThemeResource ListViewItemDragBackgroundThemeBrush}" 
+                                               DisabledOpacity="{ThemeResource ListViewItemDisabledThemeOpacity}" 
+                                               FocusBorderBrush="{ThemeResource ListViewItemFocusBorderThemeBrush}" 
+                                               HorizontalContentAlignment="Right" 
+                                               Padding="{TemplateBinding Padding}" 
+                                               PointerOverBackgroundMargin="1" 
+                                               PlaceholderBackground="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" 
+                                               PointerOverBackground="{ThemeResource ListViewItemPointerOverBackgroundThemeBrush}" 
+                                               ReorderHintOffset="{ThemeResource ListViewItemReorderHintThemeOffset}" 
+                                               SelectedPointerOverBorderBrush="{ThemeResource ListViewItemSelectedPointerOverBorderThemeBrush}" 
+                                               SelectionCheckMarkVisualEnabled="False" 
+                                               SelectedForeground="Black" 
+                                               SelectedPointerOverBackground="{ThemeResource ListViewItemSelectedPointerOverBackgroundThemeBrush}" 
+                                               SelectedBorderThickness="{ThemeResource ListViewItemCompactSelectedBorderThemeThickness}" 
+                                               SelectedBackground="{ThemeResource ListViewItemSelectedBackgroundThemeBrush}" 
+                                               VerticalContentAlignment="Center" 
+                                               FontFamily="Segoe UI Light"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Tag">
+                <Setter.Value>
+                    <SolidColorBrush Color="White"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+
+    <Grid x:Name="OuterGrid" Visibility="Visible">
+        <Grid.Background>
+            <ImageBrush ImageSource="Assets/BG-main.png"/>
+        </Grid.Background>
+        <Viewbox Width="auto">
+            <Grid x:Name="Layout" Height="768" Width="1366">
+                <Grid x:Name="SnappedGrid" VerticalAlignment="Center" HorizontalAlignment="Center" Height="500" Width="500" Visibility="Collapsed">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="Assets/OuterQudiniLogo.png"/>
+                    </Grid.Background>
+                </Grid>
+                <Grid x:Name="CustomerListGrid" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="768" Width="400" Background="Transparent" Visibility="Visible">
+                    <Grid x:Name="ListViewGrid" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="768" Width="400" Background="Transparent" Visibility="Visible">
+                        <ListView x:Name="jsonDataListview" HorizontalAlignment="Right" VerticalAlignment="Center" Height="768" Width="400" FontFamily="Segoe UI Light" FontSize="30" Background="Transparent" Foreground="Black" SelectionChanged="jsontDataListview_SelectionChanged" IsSynchronizedWithCurrentItem="False" IsSwipeEnabled="False" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" SelectionMode="Single" ShowsScrollingPlaceholders="True" ItemContainerStyle="{StaticResource ListViewItemStyle1}"/>
+                    </Grid>
+                </Grid>
+                <Grid x:Name="CustomerDetailsGrid" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Right" Height="768" Width="966">
+                    <Grid x:Name="LogoGrid" Width="800" Height="250" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Grid.Background>
+                            <ImageBrush ImageSource="Assets/Qudini-Logo.png" Stretch="Uniform"/>
+                        </Grid.Background>
+                    </Grid>
+                    <Grid x:Name="CustomerDetailsElementsGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="563" Width="966" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False">
+                        <Grid x:Name="CustomerDetailsSubGrid" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="563" Width="628">
+                            <TextBlock x:Name="customerlabel_txtblk"     HorizontalAlignment="Left" Margin="22,46,0,0" TextWrapping="Wrap" Text="Customer Details:" VerticalAlignment="Top" Height="63" Width="504" FontSize="50" Foreground="Black" FontFamily="Segoe UI Black"/>
+                            <TextBlock x:Name="customerName_txtblk"     HorizontalAlignment="Left" Margin="50,150,0,0" TextWrapping="Wrap" Text="Name"               VerticalAlignment="Top" Height="32" Width="159" FontSize="22" Foreground="Black" FontFamily="Segoe UI Light"/>
+                            <TextBlock x:Name="customerEAdd_txtblk"     HorizontalAlignment="Left" Margin="50,200,0,0" TextWrapping="Wrap" Text="Email Address"     VerticalAlignment="Top" Height="32" Width="159" FontSize="22" Foreground="Black" FontFamily="Segoe UI Light"/>
+                            <TextBlock x:Name="customerETime_txtblk"    HorizontalAlignment="Left" Margin="50,250,0,0" TextWrapping="Wrap" Text="Expected Time"     VerticalAlignment="Top" Height="32" Width="159" FontSize="22" Foreground="Black" FontFamily="Segoe UI Light"/>
+                            <TextBlock x:Name="customerOTime_txtblk"    HorizontalAlignment="Left" Margin="50,300,0,0" TextWrapping="Wrap" Text="Original Time"     VerticalAlignment="Top" Height="32" Width="159" FontSize="22" Foreground="Black" FontFamily="Segoe UI Light"/>
+                            <TextBlock x:Name="customerProduct_txtblk"  HorizontalAlignment="Left" Margin="50,350,0,0" TextWrapping="Wrap" Text="Product"           VerticalAlignment="Top" Height="32" Width="159" FontSize="22" Foreground="Black" FontFamily="Segoe UI Light"/>
+                            <TextBlock x:Name="customerNotes_txtblk"    HorizontalAlignment="Left" Margin="50,400,0,0" TextWrapping="Wrap" Text="Notes"             VerticalAlignment="Top" Height="32" Width="159" FontSize="22" Foreground="Black" FontFamily="Segoe UI Light"/>
+                            <TextBox x:Name="customerName_txtbx"    HorizontalAlignment="Left" Margin="250,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330" FontFamily="Segoe UI Light" IsReadOnly="True"/>
+                            <TextBox x:Name="customerEAdd_txtbx"    HorizontalAlignment="Left" Margin="250,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330" FontFamily="Segoe UI Light" IsReadOnly="True"/>
+                            <TextBox x:Name="customerETime_txtbx"   HorizontalAlignment="Left" Margin="250,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330" FontFamily="Segoe UI Light" IsReadOnly="True"/>
+                            <TextBox x:Name="customerOTime_txtbx"   HorizontalAlignment="Left" Margin="250,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330" FontFamily="Segoe UI Light" IsReadOnly="True"/>
+                            <TextBox x:Name="customerProduct_txtbx" HorizontalAlignment="Left" Margin="250,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330" FontFamily="Segoe UI Light" IsReadOnly="True"/>
+                            <TextBox x:Name="customerNotes_txtbx"   HorizontalAlignment="Left" Margin="250,400,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330" Height="120" IsReadOnly="True"/>
+                        </Grid>
+                        <Grid x:Name="CustomerAvatarSubGrid" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="563" Width="338">
+                            <Grid x:Name="CustomerAvatarElementGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Height="200" Width="200" Background="Maroon">
+                                <Image x:Name="myImage" HorizontalAlignment="Center" VerticalAlignment="Center" Height="150" Width="150" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" Source="Assets/Logo.png" Stretch="Fill"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid x:Name="QudiniLogoGrid" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="200" Width="500" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False" Margin="0,0,26,0">
+                        <Grid.Background>
+                            <ImageBrush ImageSource="Assets/Qudini-Logo.png" Stretch="Uniform"/>
+                        </Grid.Background>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</Page>
