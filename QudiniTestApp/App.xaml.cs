@@ -136,6 +136,7 @@ namespace QudiniTestApp
             args.Request.ApplicationCommands.Add(pref);
         }
 
+        //Keep track of the listview selection
         public static int prevIndex = -1;
     }
 }
